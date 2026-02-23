@@ -1,0 +1,53 @@
+<div class="session-form">
+  <a routerLink="/sessions">← Volver</a>
+  <h1>Editar Sesión</h1>
+
+  <form (ngSubmit)="onSubmit()">
+    <div class="field">
+      <label for="sport">Deporte</label>
+      <select id="sport" [(ngModel)]="sport" name="sport" required>
+        <option value="running">Running</option>
+        <option value="cycling">Ciclismo</option>
+        <option value="swimming">Natación</option>
+        <option value="strength">Fuerza</option>
+        <option value="other">Otro</option>
+      </select>
+    </div>
+
+    <div class="field">
+      <label for="date">Fecha</label>
+      <input id="date" type="date" [(ngModel)]="date" name="date" required />
+    </div>
+
+    <div class="field">
+      <label for="duration">Duración (minutos)</label>
+      <input id="duration" type="number" [(ngModel)]="durationMinutes" name="duration" min="1" required />
+    </div>
+
+    <div class="field">
+      <label for="distance">Distancia (km, opcional)</label>
+      <input id="distance" type="number" [(ngModel)]="distanceKm" name="distance" min="0" step="0.1" />
+    </div>
+
+    <div class="field">
+      <label for="avgHeartRate">Frecuencia cardíaca media (bpm, opcional)</label>
+      <input id="avgHeartRate" type="number" [(ngModel)]="avgHeartRate" name="avgHeartRate" min="30" max="250" />
+    </div>
+
+    <div class="field">
+      <label for="cadenceSpm">Cadencia (pasos/min, opcional)</label>
+      <input id="cadenceSpm" type="number" [(ngModel)]="cadenceSpm" name="cadenceSpm" min="0" max="300" />
+    </div>
+
+    <div class="field">
+      <label for="notes">Notas (opcional)</label>
+      <textarea id="notes" [(ngModel)]="notes" name="notes" rows="3"></textarea>
+    </div>
+
+    @if (error()) {
+      <p class="error">{{ error() }}</p>
+    }
+
+    <button type="submit">Guardar cambios</button>
+  </form>
+</div>

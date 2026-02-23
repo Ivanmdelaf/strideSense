@@ -1,0 +1,40 @@
+import { Component, inject, signal } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { Router, RouterLink } from '@angular/router';
+import { Store } from '@ngxs/store';
+import { AddSession } from '../../state/sessions.state';
+import { Sport } from '../../../domain/entities/session.entity';
+
+@Component({
+  selector: 'app-session-form',
+  standalone: true,
+  imports: [FormsModule, RouterLink],
+  templateUrl: './session-form.component.html',
+  styleUrl: './session-form.component.scss',
+})
+export class SessionFormComponent {
+  private readonly store  = inject(Store);
+  private readonly router = inject(Router);
+
+  sport: Sport = 'running';
+  date = new Date().toISOString().split('T')[0];
+  durationMinutes = 30;
+  distanceKm: number | null = null;
+  avgHeartRate: number | null = null;
+  cadenceSpm: number | null = null;
+  notes = '';
+  error = signal<string | null>(null);
+
+  onSubmit(): void {
+    this.store.dispatch(new AddSession({
+      sport: this.sport,
+      date: this.date,
+      durationMinutes: this.durationMinutes,
+      distanceKm: this.distanceKm ?? undefined,
+      avgHeartRate: this.avgHeartRate ?? undefined,
+      cadenceSpm: this.cadenceSpm ?? undefined,
+      notes: this.notes || undefined,
+    }));
+    this.router.navigate(['/sessions']);
+  }
+}

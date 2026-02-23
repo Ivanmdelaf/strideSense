@@ -1,0 +1,93 @@
+.login-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  overflow: hidden;
+  padding: 2rem;
+
+  .app-logo {
+    width: 160px;
+    height: 120px;
+    object-fit: fill;
+    margin-bottom: 0.5rem;
+  }
+
+  h1 {
+    margin-bottom: 2rem;
+    font-size: 1.75rem;
+  }
+
+  form {
+    width: 100%;
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+
+    label {
+      font-size: 0.875rem;
+      font-weight: 500;
+    }
+
+    input {
+      padding: 0.625rem 0.875rem;
+      border: 1px solid #d1d5db;
+      border-radius: 0.5rem;
+      font-size: 1rem;
+      outline: none;
+      transition: border-color 0.2s;
+
+      &:focus {
+        border-color: #6366f1;
+      }
+    }
+  }
+
+  .error {
+    color: #ef4444;
+    font-size: 0.875rem;
+  }
+
+  button {
+    padding: 0.75rem;
+    background-color: #6366f1;
+    color: #fff;
+    border: none;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.2s;
+
+    &:hover:not(:disabled) {
+      background-color: #4f46e5;
+    }
+
+    &:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+  }
+
+  .link {
+    text-align: center;
+    font-size: 0.875rem;
+
+    a {
+      color: #6366f1;
+      text-decoration: none;
+      font-weight: 500;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}
